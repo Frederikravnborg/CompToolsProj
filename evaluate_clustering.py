@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # ============================================
 
 # Toggle to switch between simplified and original position encodings
-USE_SIMPLE_POSITIONS = True  # Set to False to use original positions
+USE_SIMPLE_POSITIONS = False  # Set to False to use original positions
 
 # ============================================
 # Step 1: Load the Clustered Data

@@ -6,7 +6,7 @@ import pandas as pd
 
 
 # Determine the number of clusters based on looking at the dendrogram
-num_clusters = 5 
+num_clusters = 4
 
 
 # Load the preprocessed data
