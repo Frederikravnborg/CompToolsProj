@@ -1,0 +1,9 @@
+=== Classification Report ===
+              precision    recall  f1-score   support
+
+         Ham       0.99      0.99      0.99       483
+        Spam       0.96      0.93      0.95        75
+
+    accuracy                           0.99       558
+   macro avg       0.97      0.96      0.97       558
+weighted avg       0.99      0.99      0.99       558
