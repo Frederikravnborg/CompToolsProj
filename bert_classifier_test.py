@@ -33,6 +33,7 @@ TEST_DATA_PATH = "/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/s
 MAX_LEN = 128                           # Maximum length of input sequences
 BATCH_SIZE = 16                         # Batch size for evaluation
 EVALUATION_SAVE_DIR = 'evaluation_results'  # Directory to save evaluation results
+EVALUATION_RESULTS_FILE = 'evaluation_results.txt'  # Single text file for all evaluation outputs
 
 # ---------------------------
 # 2. Load the Trained Model
@@ -187,45 +188,32 @@ print(class_report)
 if not os.path.exists(EVALUATION_SAVE_DIR):
     os.makedirs(EVALUATION_SAVE_DIR)
 
-# 6.1 Save Scalar Metrics to CSV
-metrics = {
-    'Accuracy': accuracy,
-    'Balanced Accuracy': balanced_accuracy,
-    'Precision': precision,
-    'Recall': recall,
-    'F1-Score': f1,
-    'ROC-AUC': roc_auc
-}
+# Define the path for the single evaluation results file
+evaluation_results_path = os.path.join(EVALUATION_SAVE_DIR, EVALUATION_RESULTS_FILE)
 
-metrics_df = pd.DataFrame([metrics])
-metrics_csv_path = os.path.join(EVALUATION_SAVE_DIR, 'evaluation_metrics.csv')
-metrics_df.to_csv(metrics_csv_path, index=False)
-print(f"Evaluation metrics saved to '{metrics_csv_path}'.")
-
-# 6.2 Save Confusion Matrix to CSV
-conf_matrix_df = pd.DataFrame(
-    conf_matrix,
-    index=['Actual_Ham', 'Actual_Spam'],
-    columns=['Predicted_Ham', 'Predicted_Spam']
-)
-conf_matrix_csv_path = os.path.join(EVALUATION_SAVE_DIR, 'confusion_matrix.csv')
-conf_matrix_df.to_csv(conf_matrix_csv_path)
-print(f"Confusion matrix saved to '{conf_matrix_csv_path}'.")
-
-# 6.3 Save Classification Report to Text File
-class_report_path = os.path.join(EVALUATION_SAVE_DIR, 'classification_report.txt')
-with open(class_report_path, 'w') as f:
+# Open the file in write mode
+with open(evaluation_results_path, 'w') as f:
+    # Write Metrics
+    f.write("=== Evaluation Metrics ===\n")
+    f.write(f"Accuracy           : {accuracy:.4f}\n")
+    f.write(f"Balanced Accuracy  : {balanced_accuracy:.4f}\n")
+    f.write(f"Precision          : {precision:.4f}\n")
+    f.write(f"Recall             : {recall:.4f}\n")
+    f.write(f"F1-Score           : {f1:.4f}\n")
+    f.write(f"ROC-AUC            : {roc_auc:.4f}\n\n")
+    
+    # Write Confusion Matrix
+    f.write("=== Confusion Matrix ===\n")
+    conf_matrix_df = pd.DataFrame(
+        conf_matrix,
+        index=['Actual_Ham', 'Actual_Spam'],
+        columns=['Predicted_Ham', 'Predicted_Spam']
+    )
+    f.write(conf_matrix_df.to_string())
+    f.write("\n\n")
+    
+    # Write Classification Report
     f.write("=== Classification Report ===\n")
     f.write(class_report)
-print(f"Classification report saved to '{class_report_path}'.")
-
-# ---------------------------
-# 7. (Optional) Save Predictions
-# ---------------------------
-
-# predictions_df = test_df.copy()
-# predictions_df['Predicted_Tag'] = all_preds
-# predictions_df['Predicted_Probability'] = all_probs
-# predictions_csv_path = os.path.join(EVALUATION_SAVE_DIR, 'test_predictions.csv')
-# predictions_df.to_csv(predictions_csv_path, index=False)
-# print(f"Predictions saved to '{predictions_csv_path}'.")
+    
+print(f"All evaluation results saved to '{evaluation_results_path}'.")

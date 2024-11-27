@@ -10,6 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.preprocessing import StandardScaler
 
 test = pd.read_csv('/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/sms_data/test.csv')
 train = pd.read_csv('/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/sms_data/train.csv')
@@ -29,15 +30,23 @@ classifiers = {
     'NaiveBayes': MultinomialNB()
 }
 
-for name, clf in classifiers.items():
-    pipeline = Pipeline([
-        ('tfidf', TfidfVectorizer()),
-        ('clf', clf)
-    ])
-    pipeline.fit(X_train, y_train)
-    predictions = pipeline.predict(X_test)
+# Open a single results file in write mode before the loop
+with open('results_all_classifiers.txt', 'w') as f:
+    for name, clf in classifiers.items():
+        pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer()),
+            ('scaler', StandardScaler(with_mean=False)),
+            ('clf', clf)
+        ])
+        pipeline.fit(X_train, y_train)
+        predictions = pipeline.predict(X_test)
+        
+        balanced_acc = balanced_accuracy_score(y_test, predictions)
+        print(f'Classifier: {name}')
+        print(f'Balanced Accuracy: {balanced_acc}')
+        print(classification_report(y_test, predictions))
     
-    balanced_acc = balanced_accuracy_score(y_test, predictions)
-    print(f'Classifier: {name}')
-    print(f'Balanced Accuracy: {balanced_acc}')
-    print(classification_report(y_test, predictions))
+        f.write(f'Classifier: {name}\n')
+        f.write(f'Balanced Accuracy: {balanced_acc}\n')
+        f.write(classification_report(y_test, predictions))
+        f.write('\n')
