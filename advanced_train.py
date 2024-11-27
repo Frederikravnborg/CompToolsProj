@@ -30,9 +30,9 @@ MAX_LEN = 128                       # Maximum length of input sequences
 BATCH_SIZE = 16                     # Batch size for training and validation
 EPOCHS = 10                         # Updated number of training epochs
 MODEL_NAME = 'bert-base-uncased'    # Pre-trained BERT model
-TRAIN_DATA_PATH = "/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/sms_data/train.csv"  # Path to training data
-TEST_DATA_PATH = "/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/sms_data/test.csv"    # Path to test data
-MODEL_SAVE_PATH = 'spam_classifier_model'  # Directory to save the trained model
+TRAIN_DATA_PATH = "sms_data/train.csv"  # Path to training data
+TEST_DATA_PATH = "sms_data/test.csv"    # Path to test data
+MODEL_SAVE_PATH = 'spam_classifier_model'  # Directory to save the trained modeld
 
 # ---------------------------------
 # 2. Load and Preprocess the Data
