@@ -10,6 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.naive_bayes import MultinomialNB
+from transformers import BertTokenizer, BertForSequenceClassification, AdamW, get_linear_schedule_with_warmup
 
 test = pd.read_csv('/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/sms_data/test.csv')
 train = pd.read_csv('/Users/fredmac/Documents/DTU-FredMac/CompTools/CompToolsProj/sms_data/train.csv')
