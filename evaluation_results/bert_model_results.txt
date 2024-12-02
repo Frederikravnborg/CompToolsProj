@@ -1,3 +1,16 @@
+=== Evaluation Metrics ===
+Accuracy           : 0.9857
+Balanced Accuracy  : 0.9636
+Precision          : 0.9589
+Recall             : 0.9333
+F1-Score           : 0.9459
+ROC-AUC            : 0.9940
+
+=== Confusion Matrix ===
+             Predicted_Ham  Predicted_Spam
+Actual_Ham             480               3
+Actual_Spam              5              70
+
 === Classification Report ===
               precision    recall  f1-score   support
 

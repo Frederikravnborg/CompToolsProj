@@ -1,0 +1,77 @@
+Classifier: RandomForest
+Balanced Accuracy: 0.8866666666666667
+              precision    recall  f1-score   support
+
+         ham       0.97      1.00      0.98       483
+        spam       1.00      0.77      0.87        75
+
+    accuracy                           0.97       558
+   macro avg       0.98      0.89      0.93       558
+weighted avg       0.97      0.97      0.97       558
+
+Classifier: LogisticRegression
+Balanced Accuracy: 0.9112629399585921
+              precision    recall  f1-score   support
+
+         ham       0.97      1.00      0.98       483
+        spam       0.97      0.83      0.89        75
+
+    accuracy                           0.97       558
+   macro avg       0.97      0.91      0.94       558
+weighted avg       0.97      0.97      0.97       558
+
+Classifier: SVM
+Balanced Accuracy: 0.8066666666666666
+              precision    recall  f1-score   support
+
+         ham       0.94      1.00      0.97       483
+        spam       1.00      0.61      0.76        75
+
+    accuracy                           0.95       558
+   macro avg       0.97      0.81      0.87       558
+weighted avg       0.95      0.95      0.94       558
+
+Classifier: KNN
+Balanced Accuracy: 0.5533333333333333
+              precision    recall  f1-score   support
+
+         ham       0.88      1.00      0.94       483
+        spam       1.00      0.11      0.19        75
+
+    accuracy                           0.88       558
+   macro avg       0.94      0.55      0.56       558
+weighted avg       0.89      0.88      0.84       558
+
+Classifier: DecisionTree
+Balanced Accuracy: 0.9137888198757764
+              precision    recall  f1-score   support
+
+         ham       0.98      0.99      0.98       483
+        spam       0.91      0.84      0.88        75
+
+    accuracy                           0.97       558
+   macro avg       0.94      0.91      0.93       558
+weighted avg       0.97      0.97      0.97       558
+
+Classifier: GradientBoosting
+Balanced Accuracy: 0.885631469979296
+              precision    recall  f1-score   support
+
+         ham       0.97      1.00      0.98       483
+        spam       0.98      0.77      0.87        75
+
+    accuracy                           0.97       558
+   macro avg       0.97      0.89      0.92       558
+weighted avg       0.97      0.97      0.97       558
+
+Classifier: NaiveBayes
+Balanced Accuracy: 0.9424016563146997
+              precision    recall  f1-score   support
+
+         ham       0.99      0.96      0.98       483
+        spam       0.80      0.92      0.86        75
+
+    accuracy                           0.96       558
+   macro avg       0.89      0.94      0.92       558
+weighted avg       0.96      0.96      0.96       558
+
